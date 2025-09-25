@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Quiz Master</h1>
+            <p>Test your knowledge with our comprehensive quiz system</p>
+        </div>
+        
+        <div class="quiz-body">
+            <!-- Setup Screen -->
+            <div class="setup-screen active" id="setupScreen">
+                <h2>Quiz Configuration</h2>
+                <div class="form-group">
+                    <label for="timeLimit">Time Limit:</label>
+                    <div class="range-input">
+                        <input type="range" id="timeLimit" min="1" max="120" value="30" step="1">
+                        <span id="timeDisplay">30 minutes</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionCount">Number of Questions:</label>
+                    <div class="range-input">
+                        <input type="range" id="questionCount" min="5" max="120" value="20" step="5">
+                        <span id="questionDisplay">20 questions</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="difficulty">Difficulty Level:</label>
+                    <select id="difficulty">
+                        <option value="any">Any Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="any">Any Category</option>
+                        <option value="9">General Knowledge</option>
+                        <option value="21">Sports</option>
+                        <option value="22">Geography</option>
+                        <option value="23">History</option>
+                        <option value="17">Science & Nature</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary" id="startQuiz">Start Quiz</button>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div class="quiz-screen" id="quizScreen">
+                <div class="quiz-controls">
+                    <div class="timer" id="timer">Time: 30:00</div>
+                    <div class="question-counter" id="questionCounter">Question 1/20</div>
+                </div>
+                
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                
+                <div class="question-container">
+                    <div class="question-text" id="questionText">Question will appear here</div>
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="prevBtn">Previous</button>
+                    <button class="btn btn-primary" id="nextBtn">Next Question</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-screen" id="resultsScreen">
+                <h2>Quiz Results</h2>
+                <div class="score-container">
+                    <div class="score" id="finalScore">0/20</div>
+                    <div class="percentage" id="percentage">0%</div>
+                </div>
+                
+                <div class="results-details">
+                    <div class="result-item">
+                        <span>Total Questions:</span>
+                        <span id="totalQuestions">20</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Correct Answers:</span>
+                        <span id="correctAnswers">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Time Taken:</span>
+                        <span id="timeTaken">00:00</span>
+                    </div>
+                </div>
+                
+                <div class="performance-message" id="performanceMessage">
+                    Great job! Keep learning!
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="reviewAnswers">Review Answers</button>
+                    <button class="btn btn-primary" id="restartQuiz">Take Another Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    width: 95%;
+    max-width: 800px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.quiz-header {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    text-align: center;
+}
+
+.quiz-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.quiz-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.quiz-body {
+    padding: 2.5rem;
+}
+
+.setup-screen, .quiz-screen, .results-screen {
+    display: none;
+}
+
+.setup-screen.active, .quiz-screen.active, .results-screen.active {
+    display: block;
+}
+
+h2 {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.range-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;  
+    -moz-appearance: none;     
+    appearance: none;   
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4facfe;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #4299e1;
+}
+
+.range-input span {
+    min-width: 80px;
+    text-align: right;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+}
+
+.btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.btn-secondary {
+    background: #718096;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #4a5568;
+    transform: translateY(-2px);
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.timer {
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    min-width: 120px;
+    text-align: center;
+}
+
+.timer.warning {
+    background: #ff9f43;
+}
+
+.timer.critical {
+    background: #ee5253;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.question-counter {
+    background: #4facfe;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.progress {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.question-container {
+    margin-bottom: 2.5rem;
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+    line-height: 1.5;
+}
+
+/*.options-container {
+    display: grid;
+    gap: 12px;
+}*/
+/* Option Styles */
+.option {
+    padding: 15px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.option:hover {
+    background: #f7fafc;
+    border-color: #4facfe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+}
+
+.option.selected {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border-color: #4facfe;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.3);
+}
+
+.option.correct {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border-color: #48bb78;
+}
+
+.option.incorrect {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+    border-color: #f56565;
+}
+
+/* Make options container responsive */
+.options-container {
+    display: grid;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+/* Add some animation for better UX */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.option:nth-child(1) { animation-delay: 0.1s; }
+.option:nth-child(2) { animation-delay: 0.2s; }
+.option:nth-child(3) { animation-delay: 0.3s; }
+.option:nth-child(4) { animation-delay: 0.4s; }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .option {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .options-container {
+        gap: 8px;
+    }
+}
+
+/* Add pointer cursor to make it obvious they're clickable */
+.option {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Add focus styles for accessibility */
+.option:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.3);
+}    
